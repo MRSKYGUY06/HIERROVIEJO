@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --color-carbon: #15161a;
+  --color-carbon-soft: #1d1f24;
+  --color-graphite: #33363c;
+  --color-graphite-light: #6b6f78;
+  --color-steel: #c7cad1;
+  --color-steel-light: #e7e8e6;
+  --color-offwhite: #f5f4f1;
+  --color-white: #ffffff;
+  --color-rust: #b8501f;
+  --color-rust-light: #d97a3f;
+  --color-rust-dark: #8a3a15;
+}
+
+@theme inline {
+  --color-carbon: var(--color-carbon);
+  --color-carbon-soft: var(--color-carbon-soft);
+  --color-graphite: var(--color-graphite);
+  --color-graphite-light: var(--color-graphite-light);
+  --color-steel: var(--color-steel);
+  --color-steel-light: var(--color-steel-light);
+  --color-offwhite: var(--color-offwhite);
+  --color-rust: var(--color-rust);
+  --color-rust-light: var(--color-rust-light);
+  --color-rust-dark: var(--color-rust-dark);
+  --font-display: var(--font-oswald);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jbmono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-offwhite);
+  color: var(--color-carbon);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-rust);
+  color: var(--color-white);
+}
+
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, sans-serif;
+}
+.font-mono-data {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Diagonal rust corner tag, the signature motif */
+.rust-tag {
+  position: relative;
+  background: var(--color-rust);
+}
+.rust-tag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 40%);
+  pointer-events: none;
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-rust);
+  outline-offset: 2px;
+}
+
+.plate-texture {
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px);
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
