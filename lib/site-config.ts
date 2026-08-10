@@ -17,14 +17,17 @@ export const siteConfig = {
   phoneWhatsApp: "5491155551234",
   // TODO: reemplazar por el email real de ventas
   email: "ventas@hierroviejo.com.ar",
-  // TODO: verificar dirección real
-  address: "Ruta 7 Km 112, San Andrés de Giles, Buenos Aires, Argentina",
+  // IMPORTANTE: dirección deliberadamente FICTICIA (no revela la ubicación real
+  // del negocio). No reemplazarla por una real sin autorización explícita.
+  address: "Bv. del Parque 3210, Villa Martelli, Buenos Aires, Argentina",
   hours: [
     { day: "Lunes a Viernes", time: "8:30 – 18:00" },
     { day: "Sábados", time: "9:00 – 13:00" },
   ],
+  // Mapa: dirección ficticia (mismo criterio que address) — no señala la
+  // ubicación real del negocio
   mapEmbedSrc:
-    "https://www.google.com/maps?q=San+Andr%C3%A9s+de+Giles,+Buenos+Aires,+Argentina&output=embed",
+    "https://www.google.com/maps?q=Bv.+del+Parque+3210,+Villa+Martelli,+Buenos+Aires,+Argentina&output=embed",
   social: {
     // TODO: reemplazar por las URLs reales de las redes de la empresa
     instagram: "https://instagram.com/",
