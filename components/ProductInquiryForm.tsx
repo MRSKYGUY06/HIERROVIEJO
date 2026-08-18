@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { buildWhatsAppLink } from "@/lib/site-config";
 
 export default function ProductInquiryForm({ productName }: { productName: string }) {
   const [sent, setSent] = useState(false);
@@ -9,39 +8,20 @@ export default function ProductInquiryForm({ productName }: { productName: strin
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const nombre = String(form.get("nombre") ?? "").trim();
-    const empresa = String(form.get("empresa") ?? "").trim();
-    const telefono = String(form.get("telefono") ?? "").trim();
-    const email = String(form.get("email") ?? "").trim();
-    const consulta = String(form.get("consulta") ?? "").trim();
-
-    const message = [
-      `Hola, estoy interesado en la máquina ${productName}.`,
-      "",
-      `Nombre: ${nombre}`,
-      empresa ? `Empresa: ${empresa}` : "",
-      `Teléfono: ${telefono}`,
-      `Email: ${email}`,
-      "",
-      `Consulta: ${consulta}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
     setLoading(true);
-    window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
-    setLoading(false);
-    setSent(true);
+    // DEMO: no hay backend conectado. Reemplazar por integración real (API, email, CRM).
+    setTimeout(() => {
+      setLoading(false);
+      setSent(true);
+    }, 600);
   }
 
   if (sent) {
     return (
       <div className="rounded-md border border-rust/30 bg-rust/5 p-6 text-center">
-        <p className="font-display text-lg font-semibold uppercase text-carbon">¡Consulta lista!</p>
+        <p className="font-display text-lg font-semibold uppercase text-carbon">¡Consulta enviada!</p>
         <p className="mt-2 text-sm text-graphite">
-          Se abrió WhatsApp con tu consulta sobre {productName}. Solo tenés que presionar enviar y
-          te contactaremos a la brevedad.
+          Gracias por tu interés en {productName}. Te contactaremos a la brevedad.
         </p>
       </div>
     );
@@ -75,7 +55,7 @@ export default function ProductInquiryForm({ productName }: { productName: strin
         disabled={loading}
         className="w-full rounded-sm bg-rust py-3 font-display text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-rust-dark disabled:opacity-60"
       >
-        {loading ? "Enviando…" : "Enviar consulta por WhatsApp"}
+        {loading ? "Enviando…" : "Enviar consulta"}
       </button>
     </form>
   );

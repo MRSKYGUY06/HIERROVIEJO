@@ -25,7 +25,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       <div className="flex flex-1 flex-col p-5">
         <span className="font-mono-data text-xs uppercase tracking-wider text-graphite-light">
-          {product.brand} · {product.model}
+          {product.brand} · Art. {String(product.articleNumber).padStart(2, "0")}
         </span>
         <h3 className="mt-1 font-display text-lg font-semibold uppercase leading-snug tracking-tight text-carbon">
           <Link href={`/maquinas/${product.slug}`} className="hover:text-rust">

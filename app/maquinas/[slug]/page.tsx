@@ -104,7 +104,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {product.name}
             </h1>
             <p className="mt-1 font-mono-data text-sm uppercase tracking-wide text-graphite-light">
-              {product.brand} · Modelo {product.model}
+              {product.brand} · Artículo N° {String(product.articleNumber).padStart(2, "0")}
             </p>
 
             <p className="mt-5 text-base leading-relaxed text-graphite">{product.description}</p>
@@ -146,11 +146,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {product.isDemo && (
-              <p className="mt-4 font-mono-data text-xs text-graphite-light">
-                * Ficha de demostración con datos ficticios.
-              </p>
-            )}
+
           </Reveal>
         </div>
 

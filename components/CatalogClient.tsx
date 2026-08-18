@@ -11,9 +11,12 @@ type Props = {
   lockedCondition?: Condition;
 };
 
-// TODO: el filtro de precio está oculto porque hoy todas las máquinas cotizan
-// a consulta (price: null). Cuando existan precios reales, reactivar el filtro
-// (ver git history de este archivo para recuperar PRICE_RANGES y la UI).
+const PRICE_RANGES = [
+  { label: "Todos los precios", value: "" },
+  { label: "Hasta $5.000.000", value: "0-5000000" },
+  { label: "$5.000.000 – $15.000.000", value: "5000000-15000000" },
+  { label: "Más de $15.000.000", value: "15000000-" },
+];
 
 export default function CatalogClient({ lockedCondition }: Props) {
   const searchParams = useSearchParams();
@@ -22,6 +25,7 @@ export default function CatalogClient({ lockedCondition }: Props) {
   const [estado, setEstado] = useState<string>(lockedCondition ?? searchParams.get("estado") ?? "todas");
   const [categoria, setCategoria] = useState<string>(searchParams.get("categoria") ?? "todas");
   const [marca, setMarca] = useState<string>(searchParams.get("marca") ?? "todas");
+  const [precio, setPrecio] = useState<string>(searchParams.get("precio") ?? "");
   const [loading, setLoading] = useState(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
@@ -31,7 +35,7 @@ export default function CatalogClient({ lockedCondition }: Props) {
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 350);
     return () => clearTimeout(t);
-  }, [query, estado, categoria, marca]);
+  }, [query, estado, categoria, marca, precio]);
 
   function withLoading<T>(setter: (v: T) => void) {
     return (v: T) => {
@@ -44,11 +48,9 @@ export default function CatalogClient({ lockedCondition }: Props) {
   const handleEstado = withLoading(setEstado);
   const handleCategoria = withLoading(setCategoria);
   const handleMarca = withLoading(setMarca);
+  const handlePrecio = withLoading(setPrecio);
 
-  const availableCategories = useMemo(() => {
-    if (!lockedCondition) return categories;
-    return categories.filter((c) => c.group === (lockedCondition === "nueva" ? "nuevas" : "usadas"));
-  }, [lockedCondition]);
+  const availableCategories = categories;
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
@@ -57,18 +59,26 @@ export default function CatalogClient({ lockedCondition }: Props) {
       if (marca !== "todas" && p.brand !== marca) return false;
       if (query.trim()) {
         const q = query.trim().toLowerCase();
-        const haystack = `${p.name} ${p.brand} ${p.model} ${p.category} ${p.description}`.toLowerCase();
+        const haystack = `${p.name} ${p.brand} ${p.subcategory ?? ""} ${p.category} ${p.description}`.toLowerCase();
         if (!haystack.includes(q)) return false;
+      }
+      if (precio) {
+        const [minStr, maxStr] = precio.split("-");
+        const min = Number(minStr || 0);
+        const max = maxStr ? Number(maxStr) : Infinity;
+        if (p.price === null) return false;
+        if (p.price < min || p.price > max) return false;
       }
       return true;
     });
-  }, [estado, categoria, marca, query]);
+  }, [estado, categoria, marca, query, precio]);
 
   function clearFilters() {
     setQuery("");
     setEstado(lockedCondition ?? "todas");
     setCategoria("todas");
     setMarca("todas");
+    setPrecio("");
   }
 
   return (
@@ -84,6 +94,8 @@ export default function CatalogClient({ lockedCondition }: Props) {
             setCategoria={handleCategoria}
             marca={marca}
             setMarca={handleMarca}
+            precio={precio}
+            setPrecio={handlePrecio}
             categories={availableCategories}
             onClear={clearFilters}
           />
@@ -176,6 +188,8 @@ export default function CatalogClient({ lockedCondition }: Props) {
               setCategoria={handleCategoria}
               marca={marca}
               setMarca={handleMarca}
+              precio={precio}
+              setPrecio={handlePrecio}
               categories={availableCategories}
               onClear={clearFilters}
             />
@@ -200,6 +214,8 @@ function FilterBody({
   setCategoria,
   marca,
   setMarca,
+  precio,
+  setPrecio,
   categories: cats,
   onClear,
 }: {
@@ -210,6 +226,8 @@ function FilterBody({
   setCategoria: (v: string) => void;
   marca: string;
   setMarca: (v: string) => void;
+  precio: string;
+  setPrecio: (v: string) => void;
   categories: typeof categories;
   onClear: () => void;
 }) {
@@ -276,6 +294,26 @@ function FilterBody({
             </option>
           ))}
         </select>
+      </div>
+
+      <div>
+        <h3 className="mb-3 font-display text-xs font-semibold uppercase tracking-widest text-graphite-light">
+          Rango de precio
+        </h3>
+        <select
+          value={precio}
+          onChange={(e) => setPrecio(e.target.value)}
+          className="w-full rounded-sm border border-graphite/20 bg-white px-3 py-2.5 text-sm text-carbon"
+        >
+          {PRICE_RANGES.map((r) => (
+            <option key={r.value} value={r.value}>
+              {r.label}
+            </option>
+          ))}
+        </select>
+        <p className="mt-1.5 text-xs text-graphite-light">
+          La mayoría de nuestras máquinas se cotizan a consulta.
+        </p>
       </div>
 
       <button

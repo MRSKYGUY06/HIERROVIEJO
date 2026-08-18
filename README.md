@@ -139,10 +139,47 @@ disponibles.
   un array tipado (`Product[]`) con un modelo de datos claro, `lib/products.ts` puede
   reemplazarse por llamadas a una API/CMS sin tocar ningún componente de UI.
 
-## 6. Próximos pasos sugeridos
+## 7. Inventario real (actualización desde Excel + fotos)
 
-- Reemplazar los 8 productos `isDemo: true` por inventario real.
-- Conectar los formularios a un backend real (email o CRM).
-- Sumar un panel administrativo (Next.js API routes + una base de datos como Postgres/Supabase,
-  o un CMS headless) que escriba sobre la misma estructura `Product`.
-- Cargar fotografías propias de alta resolución para reemplazar los placeholders.
+El catálogo fue regenerado a partir de `Base_de_datos_final.xlsx` (62 artículos) y
+`imagenes.zip` (94 fotos numeradas). Se crearon **10 categorías nuevas** a partir de la
+columna "Familia de Producto" del Excel, reemplazando las categorías genéricas de la versión
+anterior:
+
+`Bombas` · `Transportes` · `Tanques` · `Piping` · `Ventiladores` · `Intercambiadores de Calor` ·
+`Motorreductores` · `Motores` · `Grúas` · `Otros Equipos`
+
+Cada fila del Excel generó un producto en `lib/products.ts`, con:
+- **Nombre**: derivado de Familia + Subfamilia (ej. "Bomba Centrífuga — Art. 09").
+- **Descripción**: columna "Características técnicas" cuando existía; si no, un texto
+  generado a partir de Familia/Subfamilia.
+- **Especificaciones**: Material constructivo, Dimensiones, Marca/Origen, Familia, Subfamilia
+  (los campos vacíos en el Excel se omiten automáticamente).
+- **Imágenes**: vinculadas según los números listados en la columna "foto", copiadas a
+  `public/images/inventario/` con el nombre `art-{artículo}-{número de foto original}.ext`.
+- El teléfono del dueño del equipo y la columna interna "Para MATIAS" **no se publican** en el
+  sitio (son datos internos/privados).
+
+### ⚠️ Importante: verificar la correspondencia foto ↔ artículo
+
+Al cruzar manualmente algunas filas del Excel contra las fotos del ZIP, encontramos que **la
+numeración de la columna "foto" no siempre coincide con el contenido real de esa foto** —
+algunos casos coinciden perfectamente (ej. artículo 1), pero otros no (ej. el artículo 61,
+"Generador Eólico Vertical", quedó vinculado a la foto 91, que en realidad muestra un lote de
+bombas). Esto es un problema de origen en el Excel/numeración de fotos, no algo que se pueda
+corregir de forma automática con certeza.
+
+**Publicamos igual con el matching automático**, tal como definiste. Para corregir una foto
+incorrecta:
+
+1. Abrí `lib/products.ts` y buscá el producto por su `slug` o `articleNumber`.
+2. Mirá el array `images: [...]` de ese producto.
+3. Los archivos están en `public/images/inventario/` nombrados `art-{artículo}-{foto}.ext` —
+   revisá visualmente cuál es la foto correcta para ese artículo y actualizá la ruta.
+4. Si la foto correcta no tiene ese número, buscala en `public/images/inventario/` (todas las
+   94 fotos originales quedaron copiadas ahí, aunque solo algunas están referenciadas) o
+   agregá una nueva imagen según el punto "Imágenes reales" más arriba.
+
+Recomendamos revisar especialmente los artículos con múltiples fotos agrupadas (15, 20, 25,
+36, 39, 40, 41, 42, 45, 47, 54, 60, 62) y los artículos 3, 16, 61 detectados con error confirmado.
+
