@@ -3,18 +3,18 @@ import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import { siteConfig } from "@/lib/site-config";
+import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Empresa",
   description:
-    "Conocé Hierro Viejo: más de 35 años de experiencia en la compra y venta de maquinaria industrial nueva y usada.",
+    "Conocé Hierro Viejo: compra y venta de maquinaria industrial nueva y usada, con asesoramiento de profesionales con más de 30 años de experiencia.",
   alternates: { canonical: "/empresa" },
 };
 
 const VALUES = [
   { title: "Solidez", text: "Una trayectoria construida operación tras operación." },
-  { title: "Experiencia", text: "Más de tres décadas trabajando junto a la industria." },
+  { title: "Experiencia", text: "Más de 30 años trabajando junto a la industria." },
   { title: "Profesionalismo", text: "Procesos claros de compra, venta y consignación." },
   { title: "Confianza", text: "Relaciones de largo plazo con talleres y plantas." },
   { title: "Calidad", text: "Maquinaria revisada y verificada antes de ofrecerla." },
@@ -49,9 +49,8 @@ export default function EmpresaPage() {
       </Reveal>
 
       <div className="bg-carbon py-16 text-white sm:py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-3 gap-6 px-5 sm:px-8">
-          <Stat value={siteConfig.stats.years} label="Años de experiencia" />
-          <Stat value={siteConfig.stats.machines} label="Máquinas disponibles" />
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 sm:px-8">
+          <Stat value={String(products.length)} label="Unidades disponibles" />
           <Stat value="Personalizada" label="Atención al cliente" small />
         </div>
       </div>

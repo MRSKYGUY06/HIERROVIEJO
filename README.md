@@ -183,3 +183,25 @@ incorrecta:
 Recomendamos revisar especialmente los artículos con múltiples fotos agrupadas (15, 20, 25,
 36, 39, 40, 41, 42, 45, 47, 54, 60, 62) y los artículos 3, 16, 61 detectados con error confirmado.
 
+## 8. Segunda ronda de cambios — fotos corregidas + ajustes de contenido
+
+- **Fotos reemplazadas por completo**: se procesó `Fotos_Corregidas_def.7z` (85 archivos,
+  nombrados `item{N}` por número de artículo) y se reemplazó el array `images` de los 62
+  productos y los thumbnails de las 10 categorías. Las fotos quedaron en
+  `public/images/inventario/` optimizadas (máx. 1600px, JPEG calidad 78).
+- ⚠️ El archivo comprimido incluía un **"artículo 63"** (2 fotos) que no existe en
+  `Base_de_datos_final.xlsx` — no se creó ningún producto para ese número. Si corresponde a un
+  equipo real, pasame los datos (familia, descripción, especificaciones) y lo agrego.
+- Textos actualizados: "Asesoramiento con profesionales con más de 30 años de experiencia"
+  (antes "Asesoramiento técnico"), "Encontrá lo que necesitás" (antes "...la máquina que
+  necesitás").
+- El stat de unidades disponibles ahora es **dinámico** (`products.length`, hoy 62) en vez de
+  un "+100" fijo — se actualiza solo a medida que agregues o quites productos de
+  `lib/products.ts`.
+- Eliminados de todo el sitio: dirección/ubicación (y el mapa embebido de Contacto), email,
+  íconos de redes sociales (Instagram/Facebook/LinkedIn) y toda mención a "+35 años de
+  experiencia". El único medio de contacto que queda es **teléfono / WhatsApp**
+  (`siteConfig.phoneDisplay` y `phoneWhatsApp` en `lib/site-config.ts`).
+- Los formularios de contacto (`ContactForm.tsx`, `ProductInquiryForm.tsx`) ya no piden email,
+  solo nombre, empresa y teléfono.
+

@@ -68,7 +68,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-steel-light sm:text-lg">
             Venta de maquinaria nueva y usada para mecanizado, deformación de chapa y procesos
-            industriales. Asesoramiento técnico y atención personalizada en cada operación.
+            industriales. Asesoramiento con profesionales con más de 30 años de experiencia.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
@@ -88,9 +88,8 @@ export default function HomePage() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-2xl grid-cols-1 gap-6 border-t border-white/15 pt-8 sm:grid-cols-3">
+          <dl className="mt-14 grid max-w-xl grid-cols-1 gap-6 border-t border-white/15 pt-8 sm:grid-cols-2">
             {[
-              { k: siteConfig.stats.years, v: "Años de experiencia" },
               { k: "Nueva y usada", v: "Maquinaria disponible" },
               { k: "Personalizada", v: "Atención al cliente" },
             ].map((item) => (
@@ -109,7 +108,7 @@ export default function HomePage() {
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <SectionHeading eyebrow="Catálogo" title="Encontrá la máquina que necesitás" />
+            <SectionHeading eyebrow="Catálogo" title="Encontrá lo que necesitás" />
           </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {categories.map((c, i) => (
@@ -166,17 +165,11 @@ export default function HomePage() {
               usada. Trabajamos junto a empresas, talleres y profesionales ofreciendo soluciones
               adaptadas a cada necesidad productiva.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/15 pt-8">
+            <div className="mt-10 grid grid-cols-2 gap-6 border-t border-white/15 pt-8">
               <div>
-                <p className="font-display text-3xl font-bold text-rust-light">{siteConfig.stats.years}</p>
+                <p className="font-display text-3xl font-bold text-rust-light">{products.length}</p>
                 <p className="mt-1 font-mono-data text-xs uppercase tracking-wide text-steel-light">
-                  Años de experiencia
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-rust-light">{siteConfig.stats.machines}</p>
-                <p className="mt-1 font-mono-data text-xs uppercase tracking-wide text-steel-light">
-                  Máquinas disponibles
+                  Unidades disponibles
                 </p>
               </div>
               <div>

@@ -48,12 +48,6 @@ export default function ContactForm() {
           </label>
           <input id="c-telefono" name="telefono" type="tel" required className="w-full rounded-sm border border-graphite/20 bg-white px-3.5 py-2.5 text-sm text-carbon focus:border-rust" />
         </div>
-        <div>
-          <label htmlFor="c-email" className="mb-1.5 block font-mono-data text-xs uppercase tracking-wide text-graphite-light">
-            Email
-          </label>
-          <input id="c-email" name="email" type="email" required className="w-full rounded-sm border border-graphite/20 bg-white px-3.5 py-2.5 text-sm text-carbon focus:border-rust" />
-        </div>
       </div>
       <div>
         <label htmlFor="c-mensaje" className="mb-1.5 block font-mono-data text-xs uppercase tracking-wide text-graphite-light">

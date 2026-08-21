@@ -3,27 +3,16 @@ export const siteConfig = {
   legalName: "Hierro Viejo Maquinaria Industrial",
   tagline: "Maquinaria industrial para la industria que produce",
   description:
-    "Venta de maquinaria industrial y metalúrgica nueva y usada: mecanizado, deformación de chapa, bombas y equipos de proceso. Más de 35 años de experiencia.",
+    "Venta de maquinaria industrial y metalúrgica nueva y usada: mecanizado, deformación de chapa, bombas y equipos de proceso.",
   url: "https://www.hierroviejo.com.ar",
+  // Único medio de contacto del sitio. Reemplazar por el número real
+  // (formato internacional, sin '+' ni espacios) antes de publicar.
   phoneDisplay: "+54 9 11 5555-1234",
-  phoneWhatsApp: "5491155551234", // DEMO — reemplazar por el número real (formato internacional, sin '+' ni espacios)
-  email: "ventas@hierroviejo.com.ar",
-  address: "Ruta 7 Km 112, San Andrés de Giles, Buenos Aires, Argentina",
+  phoneWhatsApp: "5491155551234",
   hours: [
     { day: "Lunes a Viernes", time: "8:30 – 18:00" },
     { day: "Sábados", time: "9:00 – 13:00" },
   ],
-  mapEmbedSrc:
-    "https://www.google.com/maps?q=San+Andr%C3%A9s+de+Giles,+Buenos+Aires,+Argentina&output=embed",
-  social: {
-    instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/",
-    linkedin: "https://linkedin.com/",
-  },
-  stats: {
-    years: "+35",
-    machines: "+100",
-  },
 } as const;
 
 /** Construye un link de WhatsApp con mensaje precargado. */

@@ -33,10 +33,7 @@ export default function ProductInquiryForm({ productName }: { productName: strin
         <Field label="Nombre" id="nombre" required />
         <Field label="Empresa" id="empresa" />
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Teléfono" id="telefono" type="tel" required />
-        <Field label="Email" id="email" type="email" required />
-      </div>
+      <Field label="Teléfono" id="telefono" type="tel" required />
       <div>
         <label htmlFor="consulta" className="mb-1.5 block font-mono-data text-xs uppercase tracking-wide text-graphite-light">
           Consulta
