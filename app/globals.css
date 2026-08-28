@@ -52,7 +52,6 @@ body {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
 
-/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -74,7 +73,6 @@ body {
   }
 }
 
-/* Diagonal rust corner tag, the signature motif */
 .rust-tag {
   position: relative;
   background: var(--color-rust);
@@ -87,7 +85,6 @@ body {
   pointer-events: none;
 }
 
-/* Focus visibility */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,

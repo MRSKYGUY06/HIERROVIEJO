@@ -17,36 +17,17 @@ export const metadata: Metadata = {
 const featured = products.filter((p) => p.featured).slice(0, 8);
 
 const SERVICES = [
-  {
-    title: "Venta de maquinaria",
-    text: "Maquinaria nueva y usada para diferentes procesos industriales.",
-  },
-  {
-    title: "Compra de maquinaria",
-    text: "Recibimos consultas de empresas y particulares interesados en vender sus equipos.",
-  },
-  {
-    title: "Permutas",
-    text: "Evaluamos alternativas de permuta de maquinaria.",
-  },
-  {
-    title: "Consignaciones",
-    text: "Servicio de consignación para maquinaria industrial.",
-  },
-  {
-    title: "Tasaciones",
-    text: "Evaluación profesional de maquinaria.",
-  },
-  {
-    title: "Asesoramiento",
-    text: "Ayudamos al cliente a encontrar la máquina adecuada para sus necesidades.",
-  },
+  { title: "Venta de maquinaria", text: "Maquinaria nueva y usada para diferentes procesos industriales." },
+  { title: "Compra de maquinaria", text: "Recibimos consultas de empresas y particulares interesados en vender sus equipos." },
+  { title: "Permutas", text: "Evaluamos alternativas de permuta de maquinaria." },
+  { title: "Consignaciones", text: "Servicio de consignación para maquinaria industrial." },
+  { title: "Tasaciones", text: "Evaluación profesional de maquinaria." },
+  { title: "Asesoramiento", text: "Ayudamos al cliente a encontrar la máquina adecuada para sus necesidades." },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-carbon">
         <Image
           src="/images/products/bomba-centrifuga-01.jpg"
@@ -104,7 +85,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -120,7 +100,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* DESTACADAS */}
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -144,7 +123,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EMPRESA */}
       <section className="bg-carbon py-20 text-white sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
@@ -189,7 +167,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICIOS */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -213,7 +190,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <section className="bg-rust py-16 sm:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 text-center sm:px-8">
           <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">

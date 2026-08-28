@@ -7,7 +7,6 @@ import ProductCardSkeleton from "./ProductCardSkeleton";
 import { brands, categories, products, type Condition } from "@/lib/products";
 
 type Props = {
-  /** Bloquea el filtro de estado a un valor fijo (usado por /maquinas/nuevas y /maquinas/usadas) */
   lockedCondition?: Condition;
 };
 
@@ -29,9 +28,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
   const [loading, setLoading] = useState(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  // Loading skeleton on first mount + whenever filters change (simulates async fetch).
-  // Marking loading=true happens as part of each setter call (see setters below via
-  // handleFilterChange) so the effect below only ever turns it back off.
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 350);
     return () => clearTimeout(t);
@@ -83,7 +79,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[280px_1fr]">
-      {/* Sidebar filters — desktop */}
       <aside className="hidden lg:block">
         <div className="sticky top-24 space-y-6 rounded-md border border-graphite/10 bg-white p-5">
           <FilterBody
@@ -103,7 +98,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
       </aside>
 
       <div>
-        {/* Search + mobile filter toggle */}
         <div className="mb-6 flex flex-col gap-3 sm:flex-row">
           <div className="relative flex-1">
             <svg
@@ -120,7 +114,7 @@ export default function CatalogClient({ lockedCondition }: Props) {
               type="search"
               value={query}
               onChange={(e) => handleQuery(e.target.value)}
-              placeholder="¿Qué máquina estás buscando? Ej: torno, fresadora, plegadora..."
+              placeholder="¿Qué máquina estás buscando? Ej: bomba, transportador, ventilador..."
               className="w-full rounded-sm border border-graphite/20 bg-white py-3 pl-11 pr-4 text-sm text-carbon placeholder:text-graphite-light focus:border-rust"
               aria-label="Buscar máquina"
             />
@@ -167,7 +161,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
         )}
       </div>
 
-      {/* Mobile filter drawer */}
       {filtersOpen && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
           <div className="absolute inset-0 bg-carbon/60" onClick={() => setFiltersOpen(false)} />

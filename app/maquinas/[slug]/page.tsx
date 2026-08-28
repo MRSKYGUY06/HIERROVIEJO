@@ -145,12 +145,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </dl>
               </div>
             )}
-
-
           </Reveal>
         </div>
 
-        {/* CONSULTA */}
         <Reveal>
           <div id="consulta" className="mt-16 scroll-mt-24 rounded-md border border-graphite/10 bg-white p-6 sm:p-10">
             <div className="grid gap-10 lg:grid-cols-2">
@@ -170,7 +167,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </Reveal>
 
-        {/* RELACIONADOS */}
         {related.length > 0 && (
           <div className="mt-20">
             <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-carbon">

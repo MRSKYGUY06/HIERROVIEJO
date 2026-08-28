@@ -88,7 +88,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={`fixed inset-x-0 top-16 z-30 origin-top border-t border-graphite/40 bg-carbon transition-all duration-300 lg:hidden ${
           open ? "max-h-[85vh] opacity-100" : "pointer-events-none max-h-0 opacity-0"

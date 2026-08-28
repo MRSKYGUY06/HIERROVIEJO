@@ -9,7 +9,6 @@ export default function ContactForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // DEMO: no hay backend conectado. Reemplazar por integración real (API, email, CRM).
     setTimeout(() => {
       setLoading(false);
       setSent(true);

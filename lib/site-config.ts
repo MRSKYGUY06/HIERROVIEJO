@@ -5,10 +5,9 @@ export const siteConfig = {
   description:
     "Venta de maquinaria industrial y metalúrgica nueva y usada: mecanizado, deformación de chapa, bombas y equipos de proceso.",
   url: "https://www.hierroviejo.com.ar",
-  // Único medio de contacto del sitio. Reemplazar por el número real
-  // (formato internacional, sin '+' ni espacios) antes de publicar.
-  phoneDisplay: "+54 9 11 5555-1234",
-  phoneWhatsApp: "5491155551234",
+  // Único medio de contacto del sitio.
+  phoneDisplay: "+54 9 11 2863-1543",
+  phoneWhatsApp: "5491128631543",
   hours: [
     { day: "Lunes a Viernes", time: "8:30 – 18:00" },
     { day: "Sábados", time: "9:00 – 13:00" },
