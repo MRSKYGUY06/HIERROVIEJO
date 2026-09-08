@@ -49,7 +49,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
   const availableCategories = categories;
 
   const filtered = useMemo(() => {
-<<<<<<< HEAD
     return products
       .filter((p) => {
         if (estado !== "todas" && p.condition !== estado) return false;
@@ -70,26 +69,6 @@ export default function CatalogClient({ lockedCondition }: Props) {
         return true;
       })
       .sort((a, b) => Number(b.pinned ?? false) - Number(a.pinned ?? false));
-=======
-    return products.filter((p) => {
-      if (estado !== "todas" && p.condition !== estado) return false;
-      if (categoria !== "todas" && p.category !== categoria) return false;
-      if (marca !== "todas" && p.brand !== marca) return false;
-      if (query.trim()) {
-        const q = query.trim().toLowerCase();
-        const haystack = `${p.name} ${p.brand} ${p.subcategory ?? ""} ${p.category} ${p.description}`.toLowerCase();
-        if (!haystack.includes(q)) return false;
-      }
-      if (precio) {
-        const [minStr, maxStr] = precio.split("-");
-        const min = Number(minStr || 0);
-        const max = maxStr ? Number(maxStr) : Infinity;
-        if (p.price === null) return false;
-        if (p.price < min || p.price > max) return false;
-      }
-      return true;
-    });
->>>>>>> df56bd58079370b8fcfbc57a4499d687afc32973
   }, [estado, categoria, marca, query, precio]);
 
   function clearFilters() {
