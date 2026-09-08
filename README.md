@@ -1,5 +1,5 @@
-# Hierro Viejo — Sitio Web Corporativo y Catálogo Industrial
 
+<<<<<<< HEAD
 Sitio web para venta de maquinaria industrial y metalúrgica nueva y usada, construido con
 **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4**.
 
@@ -137,3 +137,5 @@ La primera imagen del array `images` de cada producto es siempre la que se usa c
   arriba", transiciones de 200–300ms.
 - SEO técnico: metadata por página, Open Graph, `sitemap.xml` dinámico, `robots.txt`, URLs
   amigables, alt text en imágenes.
+=======
+>>>>>>> df56bd58079370b8fcfbc57a4499d687afc32973
