@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { buildWhatsAppLink } from "@/lib/site-config";
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -9,40 +8,18 @@ export default function ContactForm() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const nombre = String(form.get("nombre") ?? "").trim();
-    const empresa = String(form.get("empresa") ?? "").trim();
-    const telefono = String(form.get("telefono") ?? "").trim();
-    const email = String(form.get("email") ?? "").trim();
-    const mensaje = String(form.get("mensaje") ?? "").trim();
-
-    const message = [
-      "Hola, les escribo desde el formulario de contacto del sitio web:",
-      "",
-      `Nombre: ${nombre}`,
-      empresa ? `Empresa: ${empresa}` : "",
-      `Teléfono: ${telefono}`,
-      `Email: ${email}`,
-      "",
-      `Mensaje: ${mensaje}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
     setLoading(true);
-    window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
-    setLoading(false);
-    setSent(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSent(true);
+    }, 600);
   }
 
   if (sent) {
     return (
       <div className="rounded-md border border-rust/30 bg-rust/5 p-6 text-center">
-        <p className="font-display text-lg font-semibold uppercase text-carbon">¡Consulta lista!</p>
-        <p className="mt-2 text-sm text-graphite">
-          Se abrió WhatsApp con tu mensaje armado. Solo tenés que presionar enviar y te
-          responderemos a la brevedad.
-        </p>
+        <p className="font-display text-lg font-semibold uppercase text-carbon">¡Mensaje enviado!</p>
+        <p className="mt-2 text-sm text-graphite">Gracias por escribirnos. Te responderemos a la brevedad.</p>
       </div>
     );
   }
@@ -70,12 +47,6 @@ export default function ContactForm() {
           </label>
           <input id="c-telefono" name="telefono" type="tel" required className="w-full rounded-sm border border-graphite/20 bg-white px-3.5 py-2.5 text-sm text-carbon focus:border-rust" />
         </div>
-        <div>
-          <label htmlFor="c-email" className="mb-1.5 block font-mono-data text-xs uppercase tracking-wide text-graphite-light">
-            Email
-          </label>
-          <input id="c-email" name="email" type="email" required className="w-full rounded-sm border border-graphite/20 bg-white px-3.5 py-2.5 text-sm text-carbon focus:border-rust" />
-        </div>
       </div>
       <div>
         <label htmlFor="c-mensaje" className="mb-1.5 block font-mono-data text-xs uppercase tracking-wide text-graphite-light">
@@ -88,7 +59,7 @@ export default function ContactForm() {
         disabled={loading}
         className="w-full rounded-sm bg-rust py-3 font-display text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-rust-dark disabled:opacity-60"
       >
-        {loading ? "Enviando…" : "Enviar por WhatsApp"}
+        {loading ? "Enviando…" : "Enviar mensaje"}
       </button>
     </form>
   );

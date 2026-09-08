@@ -17,36 +17,17 @@ export const metadata: Metadata = {
 const featured = products.filter((p) => p.featured).slice(0, 8);
 
 const SERVICES = [
-  {
-    title: "Venta de maquinaria",
-    text: "Maquinaria nueva y usada para diferentes procesos industriales.",
-  },
-  {
-    title: "Compra de maquinaria",
-    text: "Recibimos consultas de empresas y particulares interesados en vender sus equipos.",
-  },
-  {
-    title: "Permutas",
-    text: "Evaluamos alternativas de permuta de maquinaria.",
-  },
-  {
-    title: "Consignaciones",
-    text: "Servicio de consignación para maquinaria industrial.",
-  },
-  {
-    title: "Tasaciones",
-    text: "Evaluación profesional de maquinaria.",
-  },
-  {
-    title: "Asesoramiento",
-    text: "Ayudamos al cliente a encontrar la máquina adecuada para sus necesidades.",
-  },
+  { title: "Venta de maquinaria", text: "Maquinaria nueva y usada para diferentes procesos industriales." },
+  { title: "Compra de maquinaria", text: "Recibimos consultas de empresas y particulares interesados en vender sus equipos." },
+  { title: "Permutas", text: "Evaluamos alternativas de permuta de maquinaria." },
+  { title: "Consignaciones", text: "Servicio de consignación para maquinaria industrial." },
+  { title: "Tasaciones", text: "Evaluación profesional de maquinaria." },
+  { title: "Asesoramiento", text: "Ayudamos al cliente a encontrar la máquina adecuada para sus necesidades." },
 ];
 
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-carbon">
         <Image
           src="/images/products/bomba-centrifuga-01.jpg"
@@ -68,7 +49,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-steel-light sm:text-lg">
             Venta de maquinaria nueva y usada para mecanizado, deformación de chapa y procesos
-            industriales. Asesoramiento técnico y atención personalizada en cada operación.
+            industriales. Asesoramiento con profesionales con más de 30 años de experiencia.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
@@ -88,9 +69,8 @@ export default function HomePage() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-2xl grid-cols-1 gap-6 border-t border-white/15 pt-8 sm:grid-cols-3">
+          <dl className="mt-14 grid max-w-xl grid-cols-1 gap-6 border-t border-white/15 pt-8 sm:grid-cols-2">
             {[
-              { k: siteConfig.stats.years, v: "Años de experiencia" },
               { k: "Nueva y usada", v: "Maquinaria disponible" },
               { k: "Personalizada", v: "Atención al cliente" },
             ].map((item) => (
@@ -105,11 +85,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <SectionHeading eyebrow="Catálogo" title="Encontrá la máquina que necesitás" />
+            <SectionHeading eyebrow="Catálogo" title="Encontrá lo que necesitás" />
           </Reveal>
           <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {categories.map((c, i) => (
@@ -121,7 +100,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* DESTACADAS */}
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -145,7 +123,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EMPRESA */}
       <section className="bg-carbon py-20 text-white sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
@@ -166,17 +143,11 @@ export default function HomePage() {
               usada. Trabajamos junto a empresas, talleres y profesionales ofreciendo soluciones
               adaptadas a cada necesidad productiva.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/15 pt-8">
+            <div className="mt-10 grid grid-cols-2 gap-6 border-t border-white/15 pt-8">
               <div>
-                <p className="font-display text-3xl font-bold text-rust-light">{siteConfig.stats.years}</p>
+                <p className="font-display text-3xl font-bold text-rust-light">{products.length}</p>
                 <p className="mt-1 font-mono-data text-xs uppercase tracking-wide text-steel-light">
-                  Años de experiencia
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-rust-light">{siteConfig.stats.machines}</p>
-                <p className="mt-1 font-mono-data text-xs uppercase tracking-wide text-steel-light">
-                  Máquinas disponibles
+                  Unidades disponibles
                 </p>
               </div>
               <div>
@@ -196,7 +167,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICIOS */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -220,7 +190,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <section className="bg-rust py-16 sm:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 text-center sm:px-8">
           <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl">

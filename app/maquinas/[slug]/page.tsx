@@ -22,7 +22,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
-  const title = `${product.name} — ${product.condition === "usada" ? "Usada" : "Nueva"}`;
+  const title = `${product.name} — ${product.statusLabel ?? (product.condition === "usada" ? "Usada" : "Nueva")}`;
   return {
     title,
     description: product.description,
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   product.condition === "usada" ? "bg-graphite" : "bg-rust"
                 }`}
               >
-                {product.condition === "usada" ? "Usada" : "Nueva"}
+                {product.statusLabel ?? (product.condition === "usada" ? "Usada" : "Nueva")}
               </span>
               <span className="rounded-sm border border-graphite/20 px-3 py-1 font-mono-data text-xs uppercase tracking-wider text-graphite">
                 {category?.name ?? product.category}
@@ -104,7 +104,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {product.name}
             </h1>
             <p className="mt-1 font-mono-data text-sm uppercase tracking-wide text-graphite-light">
-              {product.brand} · Modelo {product.model}
+              {product.brand} · Artículo N° {String(product.articleNumber).padStart(2, "0")}
             </p>
 
             <p className="mt-5 text-base leading-relaxed text-graphite">{product.description}</p>
@@ -145,16 +145,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </dl>
               </div>
             )}
-
-            {product.isDemo && (
-              <p className="mt-4 font-mono-data text-xs text-graphite-light">
-                * Ficha de demostración con datos ficticios.
-              </p>
-            )}
           </Reveal>
         </div>
 
-        {/* CONSULTA */}
         <Reveal>
           <div id="consulta" className="mt-16 scroll-mt-24 rounded-md border border-graphite/10 bg-white p-6 sm:p-10">
             <div className="grid gap-10 lg:grid-cols-2">
@@ -174,7 +167,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </Reveal>
 
-        {/* RELACIONADOS */}
         {related.length > 0 && (
           <div className="mt-20">
             <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-carbon">

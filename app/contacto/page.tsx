@@ -5,7 +5,7 @@ import { buildWhatsAppLink, DEFAULT_WHATSAPP_MESSAGE, siteConfig } from "@/lib/s
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contactá a Hierro Viejo por teléfono, WhatsApp, email o visitanos en nuestra planta.",
+  description: "Contactá a Hierro Viejo por teléfono o WhatsApp.",
   alternates: { canonical: "/contacto" },
 };
 
@@ -18,7 +18,8 @@ export default function ContactoPage() {
           Contactanos
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-graphite">
-          Escribinos por el medio que prefieras. Te respondemos a la brevedad.
+          Escribinos por WhatsApp, llamanos o dejanos tu consulta por el formulario. Te
+          respondemos a la brevedad.
         </p>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.2fr]">
@@ -31,14 +32,6 @@ export default function ContactoPage() {
                 <li className="flex justify-between gap-4">
                   <span className="text-graphite-light">Teléfono</span>
                   <span className="font-mono-data">{siteConfig.phoneDisplay}</span>
-                </li>
-                <li className="flex justify-between gap-4">
-                  <span className="text-graphite-light">Email</span>
-                  <span className="font-mono-data break-all">{siteConfig.email}</span>
-                </li>
-                <li className="flex justify-between gap-4">
-                  <span className="text-graphite-light">Dirección</span>
-                  <span className="text-right">{siteConfig.address}</span>
                 </li>
               </ul>
               <a
@@ -63,18 +56,6 @@ export default function ContactoPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="overflow-hidden rounded-md border border-graphite/10">
-              <iframe
-                title="Ubicación de Hierro Viejo en el mapa"
-                src={siteConfig.mapEmbedSrc}
-                width="100%"
-                height="280"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
             </div>
           </div>
 

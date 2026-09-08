@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
+import { buildWhatsAppLink, DEFAULT_WHATSAPP_MESSAGE, siteConfig } from "@/lib/site-config";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
@@ -13,7 +13,7 @@ const LINKS = [
 export default function Footer() {
   return (
     <footer className="border-t border-graphite/60 bg-carbon text-steel-light">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-sm bg-rust font-display text-lg font-bold text-white">
@@ -26,23 +26,6 @@ export default function Footer() {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-graphite-light">
             {siteConfig.description}
           </p>
-          <div className="mt-6 flex gap-4">
-            {[
-              { href: siteConfig.social.instagram, label: "Instagram" },
-              { href: siteConfig.social.facebook, label: "Facebook" },
-              { href: siteConfig.social.linkedin, label: "LinkedIn" },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm border border-graphite px-3 py-1.5 font-mono-data text-xs uppercase tracking-wide text-steel-light transition-colors hover:border-rust hover:text-rust-light"
-              >
-                {s.label}
-              </a>
-            ))}
-          </div>
         </div>
 
         <div>
@@ -64,11 +47,15 @@ export default function Footer() {
           <h3 className="font-display text-sm font-semibold uppercase tracking-widest text-white">
             Contacto
           </h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>{siteConfig.phoneDisplay}</li>
-            <li className="break-words">{siteConfig.email}</li>
-            <li className="text-graphite-light">{siteConfig.address}</li>
-          </ul>
+          <p className="mt-4 text-sm">{siteConfig.phoneDisplay}</p>
+          <a
+            href={buildWhatsAppLink(DEFAULT_WHATSAPP_MESSAGE)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 rounded-sm bg-rust px-4 py-2 font-display text-xs font-semibold uppercase tracking-wide text-white hover:bg-rust-dark"
+          >
+            Consultar por WhatsApp
+          </a>
         </div>
       </div>
 
