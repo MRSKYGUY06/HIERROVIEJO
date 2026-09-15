@@ -58,7 +58,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       availability:
         product.availability === "Disponible"
           ? "https://schema.org/InStock"
-          : "https://schema.org/LimitedAvailability",
+          : product.availability === "Vendida"
+            ? "https://schema.org/SoldOut"
+            : "https://schema.org/LimitedAvailability",
     },
   };
 

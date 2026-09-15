@@ -25,7 +25,7 @@ hierro-viejo/
 │   ├── not-found.tsx           → Página 404
 │   ├── empresa/page.tsx        → Página institucional
 │   ├── servicios/page.tsx      → Servicios
-│   ├── contacto/page.tsx       → Contacto (teléfono + horarios + formulario)
+│   ├── contacto/page.tsx       → Contacto (teléfono + horarios, sin formulario)
 │   └── maquinas/
 │       ├── page.tsx            → Catálogo completo con filtros
 │       ├── nuevas/page.tsx     → Catálogo filtrado a "nuevas"
@@ -87,7 +87,7 @@ la foto que muestra el equipo completo, no un detalle.
 
 ## 5. Inventario real (desde Excel + fotos)
 
-El catálogo se generó a partir de `Base_de_datos_final.xlsx` (62 artículos), con **10 categorías**
+El catálogo se generó a partir de `Base_de_datos_final.xlsx` (72 artículos publicados), con **10 categorías**
 creadas desde la columna "Familia de Producto": Bombas, Transportes, Tanques, Piping,
 Ventiladores, Intercambiadores de Calor, Motorreductores, Motores, Grúas y Otros Equipos.
 
@@ -101,12 +101,23 @@ ordenó para que **la primera foto muestre el equipo completo**, dejando los det
 serie, medidas con cinta métrica, primeros planos) como fotos secundarias. Se revisaron y
 reordenaron especialmente los artículos: 15, 20, 25, 36, 39, 40, 41, 42, 45, 47, 54, 60, 62.
 
+### Alta de artículos 63 a 77
+Se incorporaron los artículos **63, 66, 67, 71, 72, 73, 74, 75, 76 y 77** con las fotos del lote
+`fotos_equip_1.zip`, renombradas al formato `art-NN-N.jpg` y con la foto del equipo completo en
+primera posición. También se sumaron dos fotos nuevas al artículo 19.
+
+Los artículos **64, 65, 68, 69 y 70 no se publicaron** porque no tienen foto asignada
+(el Excel los marca como "Falta. no subir aun" o sin material disponible). El teléfono del dueño
+del equipo sigue sin publicarse en el sitio.
+
 ## 6. Contenido del sitio — decisiones tomadas
 
 - El único medio de contacto visible en todo el sitio es **teléfono / WhatsApp**. No hay email,
   dirección, mapa ni redes sociales en ninguna página.
-- Los formularios (`ContactForm.tsx`, `ProductInquiryForm.tsx`) piden nombre, empresa, teléfono
-  y consulta — sin campo de email.
+- **No hay formularios de captación de datos.** Se eliminó el formulario de contacto de
+  `/contacto` (y el componente `ContactForm.tsx`), y se quitaron los campos **Nombre**, **Empresa**
+  y **Teléfono** del formulario de consulta de producto. `ProductInquiryForm.tsx` quedó como un
+  cuadro de texto editable que abre WhatsApp con el mensaje precargado.
 - El stat de "unidades disponibles" es **dinámico** (`products.length`), no un número fijo — se
   actualiza solo si agregás o quitás productos de `lib/products.ts`.
 - No hay ninguna mención a años de experiencia como cifra fija en el sitio (se usa la frase
@@ -121,7 +132,9 @@ reordenaron especialmente los artículos: 15, 20, 25, 36, 39, 40, 41, 42, 45, 47
   array. Hoy lo usa el artículo 62.
 - `statusLabel: "Restaurada"` — reemplaza la etiqueta "Nueva"/"Usada" en la card y en la ficha
   de producto por un texto personalizado. Útil para casos como equipos restaurados,
-  reacondicionados, etc.
+  reacondicionados, o **vendidos** (el artículo 62 usa `statusLabel: "VENDIDA"`).
+- `availability` acepta `"Disponible" | "Reservada" | "Vendida" | "Consultar"`. Con `"Vendida"`
+  el JSON-LD de la ficha publica `schema.org/SoldOut`.
 
 La primera imagen del array `images` de cada producto es siempre la que se usa como portada.
 
@@ -129,8 +142,8 @@ La primera imagen del array `images` de cada producto es siempre la que se usa c
 
 - Catálogo con **búsqueda de texto libre** + filtros por **estado, categoría, marca y rango de
   precio**, con loading skeletons y estado vacío.
-- Fichas de producto con galería, especificaciones dinámicas, productos relacionados, formulario
-  de consulta y JSON-LD (`schema.org/Product`) para SEO.
+- Fichas de producto con galería, especificaciones dinámicas, productos relacionados, caja de
+  consulta directa a WhatsApp y JSON-LD (`schema.org/Product`) para SEO.
 - Botón flotante de WhatsApp global + CTAs contextuales con el nombre del producto.
 - Header sticky responsive con menú hamburguesa en mobile.
 - Animaciones de aparición al hacer scroll (respeta `prefers-reduced-motion`), botón "volver
