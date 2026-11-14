@@ -87,7 +87,7 @@ la foto que muestra el equipo completo, no un detalle.
 
 ## 5. Inventario real (desde Excel + fotos)
 
-El catálogo se generó a partir de `Base_de_datos_final.xlsx` (72 artículos publicados), con **10 categorías**
+El catálogo se generó a partir de `Base_de_datos_final.xlsx` (67 artículos publicados), con **10 categorías**
 creadas desde la columna "Familia de Producto": Bombas, Transportes, Tanques, Piping,
 Ventiladores, Intercambiadores de Calor, Motorreductores, Motores, Grúas y Otros Equipos.
 
@@ -101,14 +101,16 @@ ordenó para que **la primera foto muestre el equipo completo**, dejando los det
 serie, medidas con cinta métrica, primeros planos) como fotos secundarias. Se revisaron y
 reordenaron especialmente los artículos: 15, 20, 25, 36, 39, 40, 41, 42, 45, 47, 54, 60, 62.
 
-### Alta de artículos 63 a 77
-Se incorporaron los artículos **63, 66, 67, 71, 72, 73, 74, 75, 76 y 77** con las fotos del lote
-`fotos_equip_1.zip`, renombradas al formato `art-NN-N.jpg` y con la foto del equipo completo en
-primera posición. También se sumaron dos fotos nuevas al artículo 19.
-
-Los artículos **64, 65, 68, 69 y 70 no se publicaron** porque no tienen foto asignada
-(el Excel los marca como "Falta. no subir aun" o sin material disponible). El teléfono del dueño
-del equipo sigue sin publicarse en el sitio.
+### Altas y bajas posteriores (artículos 63 a 82)
+- **Dados de baja** (se eliminaron del catálogo y se borraron sus fotos): artículos **63, 66, 67,
+  71, 72, 73, 74, 75, 76 y 77**.
+- **Dados de alta** con las fotos del lote `Fotos art. pendientes`, renombradas al formato
+  `art-NN-N.jpg` y con la foto del equipo completo en primera posición:
+  **78** Prensa Troqueladora de 4 columnas, **79** Torno CNC Hyundai, **80** Balancín de 90 t,
+  **81** Carpintería completa (8 fotos) y **82** Conjunto de 6 tanques de acero inoxidable nuevos (5 fotos, detalle de cada tanque en las especificaciones).
+- El artículo 19 conserva las dos fotos extra sumadas anteriormente.
+- **No publicados** por no tener foto asignada: 64, 65, 68, 69 y 70 (los videos `.mp4` del lote
+  no se usan). Los teléfonos y contactos de los dueños de los equipos siguen sin publicarse.
 
 ## 6. Contenido del sitio — decisiones tomadas
 
